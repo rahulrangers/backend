@@ -13,6 +13,7 @@ import os
 import tempfile
 import warnings
 from lightgbm import LGBMClassifier
+from waitress import serve
 from flask_cors import CORS
 warnings.filterwarnings("ignore")
 
@@ -153,4 +154,5 @@ def upload_file():
     return jsonify({'error': 'File upload failed'}), 500
 
 if __name__ == '__main__':
-    app.run()
+  print("Starting server...")
+  serve(app, host="0.0.0.0", port=8080)
